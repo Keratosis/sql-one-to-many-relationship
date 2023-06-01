@@ -20,7 +20,7 @@ class User(Base):
     username = Column(String(30),nullable = False)
     email = Column(String(30),nullable = True)
     
-    post =relationship('post',backref = 'auther')  #first-argument is the name of the table (or model) that the relationship is being defined with 
+    posts =relationship('Post',backref = 'auther')  #first-argument is the name of the table (or model) that the relationship is being defined with 
     
     
     #to return string represetation of the object create from the above class
@@ -34,6 +34,8 @@ class Post(Base):
     title  = Column(String(20),nullable =False)
     content = Column(String(240),nullable =False )
     user_id =Column(Integer(),ForeignKey("users.id"))
+    
+
     
     def __repr__(self):
         return f"<Post('{self.title}','{self.content}')>"
